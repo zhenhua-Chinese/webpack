@@ -11,7 +11,7 @@ module.exports = {
         contentBase: "./dist",
         port: 8080,
         hot: true,
-        hotOnly:true
+        hotOnly: true
     },
     entry: {
         main: "./src/index.js",
@@ -19,10 +19,9 @@ module.exports = {
 
     },
     module: {
-        rules: [
-            {
-                test: /\.(jsx)$/,
-                exclude: /(node_modules)/,
+        rules: [{
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -62,7 +61,7 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
             },
-            
+
         ]
 
     },
