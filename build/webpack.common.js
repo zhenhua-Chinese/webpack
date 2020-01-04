@@ -1,22 +1,11 @@
-const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin');
-const webpack = require('webpack');
+const path = require("path");
 module.exports = {
-    mode: "production",
-    devtool: "cheap-module-source-map",
-    devServer: {
-        contentBase: "./dist",
-        port: 8080,
-        hot: true,
-        hotOnly: true
-    },
     entry: {
         main: "./src/index.js",
-        // sub: "./src/index.js"
-
     },
     module: {
         rules: [{
@@ -66,12 +55,10 @@ module.exports = {
 
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: "src/templateList.html"
-        }),
         new CleanWebpackPlugin(),
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new HtmlWebpackPlugin({
+            title: 'Production'
+        })
     ],
     output: {
         // "publicPath":'cdn.com.cn',
