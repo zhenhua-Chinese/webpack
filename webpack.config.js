@@ -5,8 +5,8 @@ const {
 } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 module.exports = {
-    mode: "development",
-    devtool: "cheap-module-eval-source-map",
+    mode: "production",
+    devtool: "cheap-module-source-map",
     devServer: {
         contentBase: "./dist",
         port: 8080,
