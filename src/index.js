@@ -1,22 +1,15 @@
-// import React,{Component} from "react";
-// import ReactDom from "react-dom";
-// class App extends Component{
-//     render(){
-//         return (
-//             <div>hello world!!!111221</div>
-//         )
-//     }
-// }
-// ReactDom.render(<App/>,document.getElementById("root"));
-import counter from './counter';
-import number from './number';
+import _ from 'lodash';
+ function getComponent() {
+   return import(/* webpackChunkName: "lodash" */ 'lodash').then(_ => {
+     var element = document.createElement('div');
 
-counter();
-number();
+     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
-if(module.hot) {
-	module.hot.accept('./number', () => {
-		document.body.removeChild(document.getElementById('number'));
-		number();
-	})
-}
+     return element;
+
+   }).catch(error => 'An error occurred while loading the component');
+  }
+
+ getComponent().then(component => {
+   document.body.appendChild(component);
+ })
