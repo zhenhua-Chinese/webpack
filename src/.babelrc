@@ -5,5 +5,5 @@
         "presets": [["@babel/preset-react", { "development": true }]]
       }
     },
-    
+      "plugins": ["dynamic-import-webpack"]
   }

@@ -58,21 +58,33 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin({
-			root: path.resolve(__dirname, '../')
-		}),
+            root: path.resolve(__dirname, '../')
+        }),
         new HtmlWebpackPlugin({
             title: 'Production'
         }),
     ],
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks: "async",
+            minSize: 30000,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: true,
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendors",
+                    chunks: "all"
+                }
+            }
         }
     },
     output: {
         // "publicPath":'cdn.com.cn',
         "path": path.resolve(__dirname, "../dist"),
-        "filename": "[name].js",
-        "chunkFilename": '[name].bundle.js',
+        "filename": "[name].js"
     }
 }
