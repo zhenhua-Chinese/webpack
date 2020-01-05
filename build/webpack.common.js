@@ -2,10 +2,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin');
+const webpack = require('webpack');
 const path = require("path");
 module.exports = {
     entry: {
         main: "./src/index.js",
+        // other: "./src/another-module.js"
     },
     module: {
         rules: [{
@@ -55,14 +57,22 @@ module.exports = {
 
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+			root: path.resolve(__dirname, '../')
+		}),
         new HtmlWebpackPlugin({
             title: 'Production'
-        })
+        }),
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     output: {
         // "publicPath":'cdn.com.cn',
-        "path": path.resolve(__dirname, "dist"),
-        "filename": "[name].js"
+        "path": path.resolve(__dirname, "../dist"),
+        "filename": "[name].js",
+        "chunkFilename": '[name].bundle.js',
     }
 }
