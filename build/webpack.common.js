@@ -4,6 +4,7 @@ const {
 } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const path = require("path");
+const babelpolyfill = require("babel-polyfill")
 module.exports = {
     entry: {
         main: "./src/index.js",
@@ -66,25 +67,7 @@ module.exports = {
     ],
     optimization: {
         splitChunks: {
-            chunks: "all",
-            minSize: 30000,
-            minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-            automaticNameDelimiter: '~',
-            name: true,
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10,
-                    name:'common'
-                },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true
-                }
-            }
+            chunks: "all"
         }
     },
     output: {
