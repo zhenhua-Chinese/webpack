@@ -1,22 +1,23 @@
-import "babel-polyfill";
-async function getComponent() {
-    const {
-        default: _
-    } =await import( /* webpackChunkName: "lodash" */ 'lodash')
-    //    .then(_ => {
-    var element = document.createElement('div');
+// import "babel-polyfill";
+// async function getComponent() {
+//     const {
+//         default: _
+//     } =await import( /* webpackChunkName: "lodash" */ 'lodash')
+//     //    .then(_ => {
+//     c
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+//     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
-    return element;
+//     return element;
 
-    //    }).catch(error => 'An error occurred while loading the component');
-}
+//     //    }).catch(error => 'An error occurred while loading the component');
+// }
 document.addEventListener("click",
     () => {
-        console.log("123123")
-        getComponent().then(element => {
-            document.body.appendChild(element);
+        import(/* webpackPrefetch: true */ "./a").then(({
+            default: func
+        }) => {
+            func();
         })
     }
 )
