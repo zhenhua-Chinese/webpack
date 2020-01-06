@@ -66,7 +66,7 @@ module.exports = {
     ],
     optimization: {
         splitChunks: {
-            chunks: "async",
+            chunks: "all",
             minSize: 30000,
             minChunks: 1,
             maxAsyncRequests: 5,
@@ -74,10 +74,15 @@ module.exports = {
             automaticNameDelimiter: '~',
             name: true,
             cacheGroups: {
-                commons: {
+                vendors: {
                     test: /[\\/]node_modules[\\/]/,
-                    name: "vendors",
-                    chunks: "all"
+                    priority: -10,
+                    name:'common'
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
                 }
             }
         }
