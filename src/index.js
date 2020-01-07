@@ -12,12 +12,16 @@
 
 //     //    }).catch(error => 'An error occurred while loading the component');
 // }
-document.addEventListener("click",
-    () => {
-        import(/* webpackPrefetch: true */ "./a").then(({
-            default: func
-        }) => {
-            func();
-        })
-    }
-)
+// document.addEventListener("click",
+//     () => {
+//         import(/* webpackPrefetch: true */ "./a").then(({
+//             default: func
+//         }) => {
+//             func();
+//         })
+//     }
+// )
+import "./index.css";
+import "./index1.css";
+console.log("1234234");
+
