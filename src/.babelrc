@@ -1,8 +1,23 @@
-{
-    "presets": ["@babel/preset-react"],
-    "env": {
-      "development": {
-        "presets": [["@babel/preset-react", { "development": true }]]
-      }
-    }
+// {
+//     "presets": ["@babel/preset-react","@babel/preset-env"],
+//     "env": {
+//       "development": {
+//         "presets": [["@babel/preset-react", { "development": true }]]
+//       }
+//     },
+//       "plugins": ["dynamic-import-webpack"]
+//   }
+  {
+    "presets": [
+      [
+        "@babel/preset-env", {
+          "targets": {
+            "chrome": "67",
+          },
+          "useBuiltIns": "usage"
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "plugins": ["@babel/plugin-syntax-dynamic-import"]
   }

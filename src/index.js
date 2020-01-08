@@ -1,22 +1,23 @@
-// import React,{Component} from "react";
-// import ReactDom from "react-dom";
-// class App extends Component{
-//     render(){
-//         return (
-//             <div>hello world!!!111221</div>
-//         )
-//     }
+// import "babel-polyfill";
+// async function getComponent() {
+//     const {
+//         default: _
+//     } =await import( /* webpackChunkName: "lodash" */ 'lodash')
+//     //    .then(_ => {
+//     c
+
+//     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+
+//     return element;
+
+//     //    }).catch(error => 'An error occurred while loading the component');
 // }
-// ReactDom.render(<App/>,document.getElementById("root"));
-import counter from './counter';
-import number from './number';
-
-counter();
-number();
-
-if(module.hot) {
-	module.hot.accept('./number', () => {
-		document.body.removeChild(document.getElementById('number'));
-		number();
-	})
-}
+document.addEventListener("click",
+    () => {
+        import(/* webpackPrefetch: true */ "./a").then(({
+            default: func
+        }) => {
+            func();
+        })
+    }
+)
